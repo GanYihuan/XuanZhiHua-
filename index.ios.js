@@ -12,10 +12,12 @@ import ImgData from './json/XMGBuy/Img.json';
 
 import LaunchImage from './Component/Main/XMGLaunchImage';
 import MainScreen from './Component/Main/XMGMain';
-import ShopPage from './Component/Shop/XMGShop'; // 1
-import MorePage from './Component/More/XMGMore'; // 2
-import MinePage from './Component/Mine/XMGMine'; // 3
+
 import HomePage from './Component/Home/XMGHome'; // 4
+import ShopPage from './Component/Shop/XMGShop'; // 1
+import MinePage from './Component/Mine/XMGMine'; // 3
+import MorePage from './Component/More/XMGMore'; // 2
+
 import HomeDetailScreen from './Component/Home/XMGHomeDetail';
 import ShopCenterDetailScreen from './Component/Home/XMGShopCenterDetail';
 
@@ -41,8 +43,21 @@ class TabBarItem extends Component {
 }
 
 
-const Tab = TabNavigator(
-    {
+const Tab = TabNavigator({
+      Home: {
+        screen: HomePage,
+        navigationOptions: ({navigation}) => ({
+          tabBarLabel: '首页',
+          tabBarIcon: ({focused, tintColor}) => (
+              <TabBarItem
+                  tintColor={tintColor}
+                  focused={focused}
+                  normalImage={{uri: ImgData.data[1].img}}
+                  selectedImage={{uri: ImgData.data[2].img}}
+              />
+          )
+        })
+      },
       Shop: {
         screen: ShopPage,
         navigationOptions: ({navigation}) => ({
@@ -53,20 +68,6 @@ const Tab = TabNavigator(
                   focused={focused}
                   normalImage={{uri: ImgData.data[3].img}}
                   selectedImage={{uri: ImgData.data[4].img}}
-              />
-          )
-        })
-      },
-      More: {
-        screen: MorePage,
-        navigationOptions: ({navigation}) => ({
-          tabBarLabel: '更多',
-          tabBarIcon: ({focused, tintColor}) => (
-              <TabBarItem
-                  tintColor={tintColor}
-                  focused={focused}
-                  normalImage={{uri: ImgData.data[7].img}}
-                  selectedImage={{uri: ImgData.data[8].img}}
               />
           )
         })
@@ -85,28 +86,28 @@ const Tab = TabNavigator(
           )
         })
       },
-      Home: {
-        screen: HomePage,
+      More: {
+        screen: MorePage,
         navigationOptions: ({navigation}) => ({
-          tabBarLabel: '首页',
+          tabBarLabel: '更多',
           tabBarIcon: ({focused, tintColor}) => (
               <TabBarItem
                   tintColor={tintColor}
                   focused={focused}
-                  normalImage={{uri: ImgData.data[1].img}}
-                  selectedImage={{uri: ImgData.data[2].img}}
+                  normalImage={{uri: ImgData.data[7].img}}
+                  selectedImage={{uri: ImgData.data[8].img}}
               />
           )
         })
-      },
+      }
     }, {
       animationEnabled: false, // 切换页面时是否有动画效果
       tabBarPosition: 'bottom', // 显示在底端，android 默认是显示在页面顶端的
       swipeEnabled: false, // 是否可以左右滑动切换tab
       backBehavior: 'none', // 按 back 键是否跳转到第一个Tab(首页)， none 为不跳转
-      //tabBarComponent: TabBarBottom,
+      tabBarComponent: TabBarBottom,
       lazy: true, // 是否根据需要懒惰呈现标签，而不是提前制作，意思是在app打开的时候将底部标签栏全部加载，默认false,推荐改成true哦。
-      initialRouteName: 'Mine', // 设置默认的页面组件
+      initialRouteName: 'Home', // 设置默认的页面组件
       tabBarOptions: {
         activeTintColor: '#ff8500', // 文字和图片选中颜色
         inactiveTintColor: '#999', // 文字和图片未选中颜色
