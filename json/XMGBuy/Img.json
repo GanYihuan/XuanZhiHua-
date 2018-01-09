@@ -1,0 +1,31 @@
+{
+  "data": [
+    {
+      "img": "launchimage"
+    },
+    {
+      "img": "icon_tabbar_homepage"
+    },
+    {
+      "img": "icon_tabbar_homepage_selected"
+    },
+    {
+      "img": "icon_tabbar_merchant_normal"
+    },
+    {
+      "img": "icon_tabbar_merchant_selected"
+    },
+    {
+      "img": "icon_tabbar_mine"
+    },
+    {
+      "img": "icon_tabbar_mine_selected"
+    },
+    {
+      "img": "icon_tabbar_misc"
+    },
+    {
+      "img": "icon_tabbar_misc_selected"
+    }
+  ]
+}
